@@ -36,7 +36,7 @@ fastify.all("/incoming-call", async (req, res) => {
   console.log("📲 Incoming call");
   res.type("text/xml").send(`<?xml version="1.0" encoding="UTF-8"?>
                           <Response>
-                              <Say>Hi, you have called to BoSar Agency. How can we help you today?</Say>
+                              <Say>Hi, you have called Sharma Health. How can we help you today?</Say>
                               <Connect>
                                   <Stream url="wss://${req.headers.host}/media-stream" />
                               </Connect>
