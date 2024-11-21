@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 3000;
 const { OPENAI_API_KEY, WEBHOOK_URL } = process.env;
 
 if (!OPENAI_API_KEY) {
-  console.error("Missing OpenAI API key. Please set it in the .env file.");
+  console.error("The Open AI Realtime Key is not there. Please set it in the .env file.");
   process.exit(1);
 }
 
@@ -28,7 +28,7 @@ fastify.register(fastifyWs);
 const sessions = new Map();
 // Root Route
 fastify.get("/", async (request, reply) => {
-  reply.send({ message: "Media Stream Server is running!" });
+  reply.send({ message: "The Media Stream Server is running." });
 });
 
 // Route for Twilio to handle incoming and outgoing calls
@@ -36,7 +36,7 @@ fastify.all("/incoming-call", async (req, res) => {
   console.log("📲 Incoming call");
   res.type("text/xml").send(`<?xml version="1.0" encoding="UTF-8"?>
                           <Response>
-                              <Say>Hi, you have called Sharma Health. How can we help you today?</Say>
+                              <Say>Hi, you have called Sharma Health. How can we assist you today?</Say>
                               <Connect>
                                   <Stream url="wss://${req.headers.host}/media-stream" />
                               </Connect>
@@ -110,7 +110,7 @@ fastify.register(async (fastify) => {
         }
       } catch (error) {
         console.error(
-          "❗️ Error processing OpenAI message:",
+          "❗️ Error processing OpenAI Realtime message:",
           error,
           "Raw message:",
           data,
